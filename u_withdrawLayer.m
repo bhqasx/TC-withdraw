@@ -1,14 +1,9 @@
-function [u_umax]=u_withdrawLayer(eta_b, n, eta)
+function [u_umax]=u_withdrawLayer(m, n, eta)
 %velocity distribution in withdrawral layer.
 %eta_b=zb/D, D is the thickness of withdrawral layer, zb should be
 %negative.
 
-if eta_b>0
-    disp('eta_b should be negative');
-    return;
-end
 
-sigma=(-eta_b)^((-n*eta_b)/(1+eta_b))*(1+eta_b)^n;
-sigma=1/sigma;
+sigma=(m+n)^(m+n)/m^m/n^n;
 
-u_umax=sigma*(eta-eta_b)^((-n*eta_b)/(1+eta_b))*(1+eta_b-eta)^n;
+u_umax=sigma*eta^m*(1-eta)^n;
