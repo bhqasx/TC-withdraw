@@ -6,4 +6,4 @@ function [u_umax]=u_withdrawLayer(m, n, eta)
 
 sigma=(m+n)^(m+n)/m^m/n^n;
 
-u_umax=sigma*eta^m*(1-eta)^n;
+u_umax=sigma*eta.^m.*(1-eta).^n;
