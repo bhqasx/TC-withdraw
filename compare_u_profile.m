@@ -1,5 +1,5 @@
 function [nCali]=compare_u_profile(m, n)
-%Calibrate n in velocity profile function for withdrawral layer
+%Observe the shape of velocity profile for withdrawral layer
 
 
 eta_vec=(linspace(0, 1, 100)).';
