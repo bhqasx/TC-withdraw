@@ -1,4 +1,4 @@
-function r2=CheckR2(P, D, eta_i, vMeas)
+function [r2, vPred]=CheckR2(P, D, eta_i, vMeas)
 %check the coefficient of determination of the proposed model, D is withdrawral
 %layer depth, P is the size of the outlet
 
