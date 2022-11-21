@@ -23,7 +23,7 @@ Z=zeros(numel(Kvec), numel(Wvec));
 
 np=numel(Qout);
 %M=0;     %maximum number of workers
-M=16;
+M=26;
 
 parfor (iw=1:nK, M)
     sumW=Wvec(iw);
