@@ -23,7 +23,7 @@ Z=zeros(numel(Kvec), numel(Wvec));
 
 np=numel(Qout);
 %M=0;     %maximum number of workers
-M=24;
+M=16;
 
 parfor (iw=1:nK, M)
     sumW=Wvec(iw);
@@ -45,8 +45,8 @@ parfor (iw=1:nK, M)
     end
 end
 
-figure;
-surf(X, Y, Z);
-xlabel('K');
-ylabel('total width');
-zlabel('R2');
+% figure;
+% surf(X, Y, Z);
+% xlabel('K');
+% ylabel('total width');
+% zlabel('R2');
