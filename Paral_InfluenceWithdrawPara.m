@@ -1,34 +1,46 @@
-function [X, Y, Z]=Paral_InfluenceWithdrawPara(Qout, gpri, P, H, TbH, vMeas)
+function [X, Y, Z]=Paral_InfluenceWithdrawPara(Qout, gpri, P, H, TbH, vMeas, varargin)
 %investigate the influence of the parameter in the withdrawal layer
 %thickness to the R2 of prediction
-%Qout is discharge per outlet, gpri is modified gravitational acceleration
+%Qout is the total discharge from all sluice gate, gpri is modified gravitational acceleration
 %H is water depth;
 %TbH is the depth of turbidity current in front of the dam
 %P is the centroid height of the outlet
 
 %parpool(16);
 
-K1=0.63;
-K2=0.9;
+if (nargin>6)
+    K1=varargin{1}(1);
+    K2=varargin{1}(2);
+else
+    K1=0.63;
+    K2=0.9;
+end
+
 sumW1=4.4*3;      %total width of outlets
 sumW2=25*3;
 
-nK=30;
-Kvec=linspace(K1, K2, nK);
+if (nargin>7)
+    nK1=varargin{2};
+else
+    nK1=30;
+end
+Kvec=linspace(K1, K2, nK1);
 Kvec=Kvec.';
-Wvec=linspace(sumW1, sumW2, nK);
+
+nK2=30;
+Wvec=linspace(sumW1, sumW2, nK2);
 Wvec=Wvec.';
 [X, Y]=meshgrid(Kvec, Wvec);
-Z=zeros(numel(Kvec), numel(Wvec));
+Z=zeros(numel(Wvec),numel(Kvec));
 
 np=numel(Qout);
 %M=0;     %maximum number of workers
 M=16;
 
-parfor (iw=1:nK, M)
+parfor (iw=1:nK2, M)
     sumW=Wvec(iw);
     
-    for i=1:1:nK
+    for i=1:1:nK1
         K=Kvec(i);
         D=zeros(np, 1);
         for j=1:1:np

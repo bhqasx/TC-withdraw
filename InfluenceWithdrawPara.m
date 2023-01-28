@@ -1,7 +1,7 @@
 function r2vec=InfluenceWithdrawPara(Qout, gpri, P, H, TbH, vMeas)
 %investigate the influence of the parameter in the withdrawal layer
 %thickness to the R2 of prediction
-%Qout is discharge per outlet, gpri is modified gravitational acceleration
+%Qout is the total discharge from all sluice gate, gpri is modified gravitational acceleration
 %H is water depth;
 %TbH is the depth of turbidity current in front of the dam
 %P is the centroid height of the outlet
