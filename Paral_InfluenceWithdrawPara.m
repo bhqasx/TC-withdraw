@@ -22,12 +22,12 @@ sumW2=25*3;
 if (nargin>7)
     nK1=varargin{2};
 else
-    nK1=30;
+    nK1=35;
 end
 Kvec=linspace(K1, K2, nK1);
 Kvec=Kvec.';
 
-nK2=30;
+nK2=35;
 Wvec=linspace(sumW1, sumW2, nK2);
 Wvec=Wvec.';
 [X, Y]=meshgrid(Kvec, Wvec);
