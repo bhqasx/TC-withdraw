@@ -7,7 +7,7 @@ ylabel('total width');
 zlabel('R2');
 
 %ncol=size(Z,1);
-ncol=24;
+ncol=35;
 nrow=size(Z,2);
 px=zeros(ncol,1);
 py=zeros(ncol,1);

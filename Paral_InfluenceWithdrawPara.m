@@ -50,6 +50,7 @@ parfor (iw=1:nK2, M)
             end
         end
         eta_i=TbH./D;
+        eta_i=(eta_i<=1).*eta_i+(eta_i>1).*ones(np,1);
         %disp([iw, sumW, i, K]);
         [r2, vPred]=CheckR2(P, D, eta_i, vMeas);
         disp(['r2(', num2str(i), ',', num2str(iw), ') finished']);
