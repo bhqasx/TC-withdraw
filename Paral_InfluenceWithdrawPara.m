@@ -36,7 +36,10 @@ Z=zeros(numel(Wvec),numel(Kvec));
 np=numel(Qout);
 %M=0;     %maximum number of workers
 M=16;
+%largeD_log1=[0,0];    %record K and sumW if any D is larger than H
+%largeD_log2=[0,0];    %record K and sumW if all D is larger than H
 
+%for (iw=1:nK2)
 parfor (iw=1:nK2, M)
     sumW=Wvec(iw);
     
@@ -49,6 +52,15 @@ parfor (iw=1:nK2, M)
                 D(j)=H(j);
             end
         end
+        
+%         if any(D==H)
+%             largeD_log1=[largeD_log1; K, sumW];
+%         end
+%         
+%         if all(all(D==H))
+%             largeD_log2=[largeD_log2; K, sumW];
+%         end
+        
         eta_i=TbH./D;
         eta_i=(eta_i<=1).*eta_i+(eta_i>1).*ones(np,1);
         %disp([iw, sumW, i, K]);
@@ -58,7 +70,7 @@ parfor (iw=1:nK2, M)
     end
 end
 
-% figure;
+%figure;
 % surf(X, Y, Z);
 % xlabel('K');
 % ylabel('total width');
